@@ -1,0 +1,38 @@
+<div>
+    <table mat-table [dataSource]="dataSource">    
+        <ng-container matColumnDef="fullName">
+            <th mat-header-cell *matHeaderCellDef appColumnsHeadersStyle>Nombre:</th>
+            <td mat-cell *matCellDef="let element">{{ element.name | joinFullName: element.surname }}</td>
+        </ng-container>
+        
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef appColumnsHeadersStyle>Correo:</th>
+            <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="documentNumber">
+            <th mat-header-cell *matHeaderCellDef appColumnsHeadersStyle>DNI:</th>
+            <td mat-cell *matCellDef="let element">{{ element.documentNumber }}</td>
+        </ng-container>
+        
+        <ng-container matColumnDef="phoneNumber">
+            <th mat-header-cell *matHeaderCellDef appColumnsHeadersStyle>Celular:</th>
+            <td mat-cell *matCellDef="let element">{{ element.phoneNumber }}</td>
+        </ng-container> 
+        
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef appColumnsHeadersStyle> </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button style="background-color: rgb(42, 120, 9)" (click)="openModal(element)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button style="background-color: rgb(185, 0, 0)" (click)="deleteStudent(element.id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnas"></tr>
+    </table>
+</div>
