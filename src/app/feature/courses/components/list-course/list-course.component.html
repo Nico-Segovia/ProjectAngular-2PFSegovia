@@ -1,0 +1,29 @@
+<h1> {{ cursos$ | async | json }} </h1>  <!-- Con el async le digo "mostrame esta informacion cuando ya este lista, y rendelizala. Y con el json, le digo que me muestre la informacion como un objeto Json " -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-3" *ngFor="let curso of cursos$ | async"> <!-- Acá agrego el filtro de filtro-cursos. SIENDO FILTRO LO QUE NOSOTROS ASOCIAMOS EN NUESTRO CAMPO DE TEXTO ([(ngModel)]="filtro" - LINEA 75) -->
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>{{ curso.nombre }}</mat-card-title>
+                    <mat-card-subtitle>{{ curso.comision }}</mat-card-subtitle>
+                </mat-card-header>
+                <!-- Agrego imagen  -->
+                <img class="card-image" mat-card-image
+                    src="https://blogs.ufv.ca/science/files/2020/04/New-Course-Icon-01.png" alt="Boca">
+                <mat-card-content>
+                    <p>Impartido por {{ curso.profesor.nombre }}</p>
+                    <p>{{ curso.inscripcionAbierta }}
+                    </p>
+                </mat-card-content>
+                <mat-card-actions align="end">
+                    <button mat-raised-button color="primary" (click)="redirigirEditarCurso(curso)">
+                        Editar
+                    </button> <!-- mat-button mat-raised-button, mat-flat-button -->
+                    <button mat-button color="warn" (click)="eliminarCurso(curso)">
+                        Eliminar
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

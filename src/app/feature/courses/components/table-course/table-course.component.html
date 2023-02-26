@@ -1,0 +1,62 @@
+<table mat-table [dataSource]="dataSource">
+    <!--La propiedad dataSourse es la variable que creamos en nuestro controlador -->
+    <!-- Columna de nombre -->
+    <ng-contenier matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+    </ng-contenier>
+    <!--Etiqueta propia de angular que me permite definir ciertas varibles a nivel de html, sin necesidad de crearlas en mi controlador -->
+
+    <!-- Columna de comision -->
+    <ng-contenier matColumnDef="comision">
+        <th mat-header-cell *matHeaderCellDef>Comision</th>
+        <td mat-cell *matCellDef="let element">{{ element.comision }}</td>
+    </ng-contenier>
+
+    <!-- Columna de profesor -->
+    <ng-contenier matColumnDef="profesor">
+        <th mat-header-cell *matHeaderCellDef>Profesor</th>
+        <td mat-cell *matCellDef="let element">{{ element.profesor.nombre }}</td>
+    </ng-contenier>
+
+    <!-- Columna de fecha fechaInicio -->
+    <ng-contenier matColumnDef="fechaInicio">
+        <th mat-header-cell *matHeaderCellDef>Inicia</th>
+        <td mat-cell *matCellDef="let element">{{ element.fechaInicio }}</td>
+    </ng-contenier>
+
+    <!-- Columna de fecha fecahFin -->
+    <ng-contenier matColumnDef="fechaFin">
+        <th mat-header-cell *matHeaderCellDef>Finaliza</th>
+        <td mat-cell *matCellDef="let element">{{ element.fechaFin | date:'dd/MM/YY HH:mm' }}</td>
+    </ng-contenier>
+
+    <!-- Columna de fecha inscripcionAbierta -->
+    <ng-contenier matColumnDef="inscripcionAbierta">
+        <th mat-header-cell *matHeaderCellDef>Inscripciones Abiertas</th>
+        <td mat-cell *matCellDef="let element"> <!--Quito [appBooleanoEstilo]="element.inscripcionAbierta", y lo agrego en un div interno -->
+            <div> <!-- Colocando asi, solo va a pintar un parte dentro de la celda de la columna -->
+                {{ element.inscripcionAbierta }}
+            </div>
+        </td>
+    </ng-contenier>
+
+    <!-- Columna de Acciones -->
+    <ng-contenier matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-icon-button color="primary">
+                <mat-icon>edit</mat-icon>
+            </button> <!-- mat-button mat-raised-button, mat-flat-button -->
+            <button mat-icon-button color="warn">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+    </ng-contenier>
+
+    <!-- Agrego las 'tr' para que Angular las pueda renderizar, primero los headres, y despues cada una de las filas -->
+    <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+    <!-- Arreglo de columnas que habiamos definido en nuetro controlador -->
+    <tr mat-row *matRowDef="let row; columns: columnas"></tr>
+    <!--row, representa cada fila de cada registro en nuestro arreglo. columns, el arreglo en columnas que definimos en nuestro controlador  -->
+</table>

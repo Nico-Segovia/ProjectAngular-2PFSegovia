@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NoFoundComponent } from './components/no-found/no-found.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    NoFoundComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    NoFoundComponent
   ]
 })
 export class CoreModule { }

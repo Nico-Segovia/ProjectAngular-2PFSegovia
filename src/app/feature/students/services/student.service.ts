@@ -14,11 +14,11 @@ export class StudentService {
   constructor(private http: HttpClient) {}
 
   getStudents(): Observable<any> {
-    return this.http.get('https://63dd0c2fdf83d549ce996a90.mockapi.io/Students');
+    return this.http.get('https://63f90b6f23ad39d6dd98a31c.mockapi.io/Students/');
   }
 
   saveChanges(student: Student) {
-    this.http.put<any>('https://63dd0c2fdf83d549ce996a90.mockapi.io/Students/' + student.id, student).subscribe({
+    this.http.put<any>('https://63f90b6f23ad39d6dd98a31c.mockapi.io/Students/' + student.id, student).subscribe({
       next: data => {
           student.id = data.id;
           alert("Estudiante Guardado!");        
@@ -28,7 +28,7 @@ export class StudentService {
   }
 
   deleteStudent(idStudent: number) {
-    this.http.delete('https://63dd0c2fdf83d549ce996a90.mockapi.io/Students/' + idStudent).subscribe({
+    this.http.delete('https://63f90b6f23ad39d6dd98a31c.mockapi.io/Students/' + idStudent).subscribe({
       next: data => {
           alert("Estudiante Eliminado!"); 
           window.location.reload();         
@@ -37,10 +37,10 @@ export class StudentService {
   }
 
   addStudent(student: Student) {
-    this.http.post<any>('https://63dd0c2fdf83d549ce996a90.mockapi.io/Students/', student).subscribe({
+    this.http.post<any>('https://63f90b6f23ad39d6dd98a31c.mockapi.io/Students/', student).subscribe({
       next: data => {
           student.id = data.id;
-          alert("Estudiante Registrado!");                  
+          alert("Registered Student!");                  
       }    
     });
   }
