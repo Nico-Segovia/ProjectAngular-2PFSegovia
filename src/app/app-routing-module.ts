@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
-import { AddStudentComponent } from './components/add-student/add-student.component';
-import { StudentsListComponent } from './components/students-list/students-list.component';
+import { AddStudentComponent } from './feature/students/components/add-student/add-student.component';
+import { StudentsListComponent } from './feature/students/components/students-list/students-list.component';
+import { StudentService } from './feature/students/services/student.service';
 
 export const routes: Routes = [
     {

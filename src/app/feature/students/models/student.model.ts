@@ -1,5 +1,4 @@
-import { Course } from "./course.model"
-
+import { Course } from "../../courses/models/course.model";
 export interface Student {
     id: number,
     createdAt: Date,

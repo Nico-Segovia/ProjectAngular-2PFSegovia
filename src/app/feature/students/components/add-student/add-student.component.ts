@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { StudentService } from 'src/app/services/student.service';
+import { StudentService } from '../../services/student.service';
 
 @Component({
   selector: 'app-add-student',

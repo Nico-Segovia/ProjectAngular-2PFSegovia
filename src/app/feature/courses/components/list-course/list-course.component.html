@@ -1,25 +1,25 @@
-<h1> {{ cursos$ | async | json }} </h1>  <!-- Con el async le digo "mostrame esta informacion cuando ya este lista, y rendelizala. Y con el json, le digo que me muestre la informacion como un objeto Json " -->
+<h1> {{ courses$ | async | json }} </h1>  <!-- Con el async le digo "mostrame esta informacion cuando ya este lista, y rendelizala. Y con el json, le digo que me muestre la informacion como un objeto Json " -->
 <div class="container">
     <div class="row">
-        <div class="col-md-3" *ngFor="let curso of cursos$ | async"> <!-- Acá agrego el filtro de filtro-cursos. SIENDO FILTRO LO QUE NOSOTROS ASOCIAMOS EN NUESTRO CAMPO DE TEXTO ([(ngModel)]="filtro" - LINEA 75) -->
+        <div class="col-md-3" *ngFor="let course of courses$ | async"> <!-- Acá agrego el filtro de filtro-cursos. SIENDO FILTRO LO QUE NOSOTROS ASOCIAMOS EN NUESTRO CAMPO DE TEXTO ([(ngModel)]="filtro" - LINEA 75) -->
             <mat-card>
                 <mat-card-header>
-                    <mat-card-title>{{ curso.nombre }}</mat-card-title>
-                    <mat-card-subtitle>{{ curso.comision }}</mat-card-subtitle>
+                    <mat-card-title>{{ course.name }}</mat-card-title>
+                    <mat-card-subtitle>{{ course.commission }}</mat-card-subtitle>
                 </mat-card-header>
-                <!-- Agrego imagen  -->
+                <!-- Add image  -->
                 <img class="card-image" mat-card-image
-                    src="https://blogs.ufv.ca/science/files/2020/04/New-Course-Icon-01.png" alt="Boca">
+                    src="https://blogs.ufv.ca/science/files/2020/04/New-Course-Icon-01.png" alt="Generic image of courses">
                 <mat-card-content>
-                    <p>Impartido por {{ curso.profesor.nombre }}</p>
-                    <p>{{ curso.inscripcionAbierta }}
+                    <p>Impartido por {{ course.professor.name }}</p>
+                    <p>{{ coruse.openRegistration }}
                     </p>
                 </mat-card-content>
                 <mat-card-actions align="end">
-                    <button mat-raised-button color="primary" (click)="redirigirEditarCurso(curso)">
+                    <button mat-raised-button color="primary" (click)="redirectEditCourse(course)">
                         Editar
                     </button> <!-- mat-button mat-raised-button, mat-flat-button -->
-                    <button mat-button color="warn" (click)="eliminarCurso(curso)">
+                    <button mat-button color="warn" (click)="deleteCourse(course)">
                         Eliminar
                     </button>
                 </mat-card-actions>

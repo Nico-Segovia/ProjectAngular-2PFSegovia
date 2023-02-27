@@ -1,58 +1,58 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Curso } from 'src/app/models/curso';
-import { CursosService } from '../../services/cursos.service';
+import { Course } from '../../models/course.model';
+import { CoursesService } from '../../services/courses.service';
 
 @Component({
-  selector: 'app-editar-curso',
-  templateUrl: './editar-curso.component.html',
-  styleUrls: ['./editar-curso.component.css']
+  selector: 'app-edit-course',
+  templateUrl: './edit-course.component.html',
+  styleUrls: ['./edit-course.component.css']
 })
-export class EditarCursoComponent implements OnInit {
+export class EditCourseComponent implements OnInit {
 
   //Creo un objeto de tipo formulario para recibir los valores de los parametros que recibo de redirigirEditarCurso()
-  formulario!: FormGroup;
+  form!: FormGroup;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private cursoService: CursosService,
+    private courseService: CoursesService,
     private router: Router
   ){}
 
   // Obtengo los parametros que me envia redirigirEditarCurso() desde la ruta
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe((parametros) =>{
-      console.log(parametros);
+    this.activatedRoute.paramMap.subscribe((parameters) =>{
+      console.log(parameters);
 
       // Aca también voy a castear al tipo de dato Date, porque por parametro me devuelve todo lo que tenga en dato String 
-      this.formulario = new FormGroup({
-        comision: new FormControl(parametros.get('comision')),
-        fechaFin: new FormControl(new Date(parametros.get('fechaFin') || '')),
-        fechaInicio: new FormControl(new Date(parametros.get('fechaInicio') || '')),
-        inscripcionAbierta: new FormControl(parametros.get('inscripcionAbierta' || false)),
-        nombre: new FormControl(parametros.get('nombre')),
+      this.form = new FormGroup({
+        commission: new FormControl(parameters.get('commission')),
+        endDate: new FormControl(new Date(parameters.get('endDate') || '')),
+        startDate: new FormControl(new Date(parameters.get('startDate') || '')),
+        openRegistration: new FormControl(parameters.get('openRegistration' || false)),
+        name: new FormControl(parameters.get('name')),
         // profesor: new FormControl(parametros.get('profesor'))
       })
     })
   }
 
-  editarCurso(){
-    let curso: Curso = {
-      nombre: this.formulario.value.nombre,
-      comision: this.formulario.value.comision,
-      fechaInicio: this.formulario.value.fechaInicio,
-      fechaFin: this.formulario.value.fechaFin,
-      inscripcionAbierta: this.formulario.value.inscripcionAbierta,
-      profesor: {
-        nombre: 'Nicol',
-        correo: 'nico@gmail.com',
-        fechaRegistro: new Date()
+  editCourse(){
+    let course: Course = {
+      name: this.form.value.name,
+      commission: this.form.value.commission,
+      startDate: this.form.value.startDate,
+      endDate: this.form.value.endDate,
+      openRegistration: this.form.value.openRegistration,
+      professor: {
+        name: 'Mariella',
+        email: 'mariella@gmail.com',
+        registrationDate: new Date()
       }
     }
 
-    this.cursoService.editarCurso(curso);
-    this.router.navigate(['cursos/listar']); // esto es para cuando guarde lo editado, me mande a la vista de listar cursos y vea ya el cambio reflejado
+    this.courseService.editCourse(course);
+    this.router.navigate(['courses/toList']); // esto es para cuando guarde lo editado, me mande a la vista de listar cursos y vea ya el cambio reflejado
   }
 }

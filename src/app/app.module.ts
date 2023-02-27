@@ -49,7 +49,7 @@ import { JoinFullNamePipe } from './shared/pipes/join-full-name.pipe';
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
     MatDialogModule,
-    NgbModule,
+    NgbModule
   ],
   providers: [
     HttpClient,

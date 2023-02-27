@@ -1,49 +1,48 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Curso } from 'src/app/models/curso';
-import { CursosService } from '../../services/cursos.service';
+import { Course } from '../../models/course.model';
+import { CoursesService } from '../../services/courses.service';
 
 @Component({
-  selector: 'app-agregar-curso',
-  templateUrl: './agregar-curso.component.html',
-  styleUrls: ['./agregar-curso.component.css']
+  selector: 'app-add-course',
+  templateUrl: './add-course.component.html',
+  styleUrls: ['./add-course.component.css']
 })
-export class AgregarCursoComponent implements OnInit{
+export class AddCourseComponent implements OnInit{
 
-  formulario!: FormGroup;
+  form!: FormGroup;
 
   constructor(
     private router: Router,
-    private cursoService: CursosService
+    private courseService: CoursesService
   ){}
 
   ngOnInit(): void {
-    this.formulario = new FormGroup({
-      comision: new FormControl(),
-      fechaFin: new FormControl(),
-      fechaInicio: new FormControl(),
-      inscripcionAbierta: new FormControl(),
-      nombre: new FormControl(),
+    this.form = new FormGroup({
+      comission: new FormControl(),
+      endDate: new FormControl(),
+      startDate: new FormControl(),
+      openRegistration: new FormControl(),
+      name: new FormControl(),
     });
   }
 
-  agregarCurso(){
-    let curso: Curso = {
-      nombre: this.formulario.value.nombre,
-      comision: this.formulario.value.comision,
-      fechaInicio: this.formulario.value.fechaInicio,
-      fechaFin: this.formulario.value.fechaFin,
-      inscripcionAbierta: this.formulario.value.inscripcionAbierta,
-      profesor: {
-        nombre: 'Nicol',
-        correo: 'nico@gmail.com',
-        fechaRegistro: new Date()
+  addCourse(){
+    let course: Course = {
+      name: this.form.value.name,
+      commission: this.form.value.commission,
+      startDate: this.form.value.startDate,
+      endDate: this.form.value.endDate,
+      openRegistration: this.form.value.openRegistration,
+      professor: {
+        name: 'Mariella',
+        email: 'mariella@gmail.com',
+        registrationDate: new Date()
       }
     }
 
-    this.cursoService.agregarCurso(curso);
-    this.router.navigate(['cursos/listar']); // esto es para cuando guarde lo editado, me mande a la vista de listar cursos y vea ya el cambio reflejado
+    this.courseService.addCourse(course);
+    this.router.navigate(['course/toList']); 
   }
-
 }

@@ -1,33 +1,32 @@
 <div class="container">
-    <form [formGroup]="formulario" (ngSubmit)="agregarCurso()">
+    <form [formGroup]="form" (ngSubmit)="addCourse()">
         <div class="row">
             <mat-form-field class="col-md-6">
                 <mat-label>Nombre</mat-label>
-                <input matInput formControlName="nombre">
+                <input matInput formControlName="name">
             </mat-form-field>
 
             <mat-form-field class="col-md-6">
                 <mat-label>Comisión</mat-label>
-                <input matInput formControlName="comision">
+                <input matInput formControlName="commission">
             </mat-form-field>
 
             <mat-form-field class="col-md-6">
                 <mat-label>Fecha Inicio</mat-label>
-                <input matInput [matDatepicker]="fechaInicio" formControlName="fechaInicio">
-                <mat-datepicker-toggle matSuffix [for]="fechaInicio"></mat-datepicker-toggle>
-                <mat-datepicker #fechaInicio></mat-datepicker>
+                <input matInput [matDatepicker]="startDate" formControlName="startDate">
+                <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+                <mat-datepicker #startDate></mat-datepicker>
             </mat-form-field>
 
             <mat-form-field class="col-md-6">
                 <mat-label>Fecha Fin</mat-label>
-                <input matInput [matDatepicker]="fechaFin" formControlName="fechaFin">
-                <mat-datepicker-toggle matSuffix [for]="fechaFin"></mat-datepicker-toggle>
-                <mat-datepicker #fechaFin></mat-datepicker>
+                <input matInput [matDatepicker]="endDate" formControlName="endDate">
+                <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+                <mat-datepicker #endDate></mat-datepicker>
             </mat-form-field>
 
             <div class="col-md-6">
-                
-                <mat-slide-toggle formControlName="inscripcionAbierta"><label style="color: black">Inscripción abierta</label></mat-slide-toggle>
+                <mat-slide-toggle formControlName="openRegistration"><label style="color: black">Inscripción abierta</label></mat-slide-toggle>
             </div>
 
             <div class="col-md-6">
