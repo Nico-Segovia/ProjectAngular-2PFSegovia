@@ -1,14 +1,28 @@
-<mat-sidenav-container>
-    <mat-sidenav mode="side" opened #sidenav style="background-color: rgb(101, 151, 227)">
-      <mat-nav-list>  
-        <a routerLink="" mat-list-item>Lista de Estudiantes</a>
-        <a routerLink="add-student" mat-list-item>Agregar Estudiantes</a>
-        <!-- <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>   -->
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <div style="height: 88vh;">  
-        <router-outlet></router-outlet>
+
+<i class="bi bi-list mobile-nav-toggle d-xl-none"></i>  
+
+<div class="menu">
+  <header id="header">
+    <div class="d-flex flex-column">
+
+      <div class="profile">
+        <img src="assets/img/perfil2.png" alt="" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="index.html">Nicolas Segovia</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="https://www.instagram.com/nicosegov/" class="linkedin"><i class="bx bx-world"></i></a>
+		  <a href="https://github.com/Nico-Segovia" class="github"><i class="bx bxl-github"></i></a>          
+		  <a href="https://www.linkedin.com/in/nicosegovia/" class="linkedin"><i class="bx bxl-linkedin"></i></a>		 	 		 
+        </div>
       </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>          
+          <li><a routerLink="/inicio" class="nav-link scrollto"><i class="bx bx-home"></i> <span>Inicio</span></a></li>
+          <li><a routerLink="/alumnos" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Alumnos</span></a></li>
+          <li><a routerLink="/cursos" class="nav-link scrollto"><i class="bx bxs-graduation"></i> <span>Cursos</span></a></li>
+          <li><a routerLink="/inscripciones" class="nav-link scrollto"><i class="bx bx-edit"></i> <span>Inscripciones</span></a></li>          
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>
